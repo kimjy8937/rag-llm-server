@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from fastapi import FastAPI
+import os
 
 from app.embeddings.embedder import Embedder
 from app.vectorstore.faiss_store import FaissStore
@@ -12,26 +13,28 @@ from app.ingestion.document_loader import load_documents_from_folder
 
 app = FastAPI()
 
-# ---------------------------
-# 문서 자동 로딩
-# ---------------------------
-documents = load_documents_from_folder("docs")
-
-print("로드된 문서 수:", len(documents))
-
-# ---------------------------
-# RAG 초기화
-# ---------------------------
 embedder = Embedder()
-doc_embeddings = embedder.encode(documents)
 
-store = FaissStore(dimension=doc_embeddings.shape[1])
-store.add(doc_embeddings, documents)
+# ---------------------------
+# FAISS 인덱스 존재 여부 확인
+# ---------------------------
+index_path = "index/faiss.index"
+
+if os.path.exists(index_path):
+    print("기존 인덱스 사용")
+    store = FaissStore(dimension=384)  # all-MiniLM-L6-v2 = 384차원
+else:
+    print("문서로 새 인덱스 생성")
+    documents = load_documents_from_folder("docs")
+    print("로드된 문서 수:", len(documents))
+
+    doc_embeddings = embedder.encode(documents)
+    store = FaissStore(dimension=doc_embeddings.shape[1])
+    store.add(doc_embeddings, documents)
 
 llm = HFLlm()
 pipeline = RagPipeline(embedder, store, llm)
 
-# 라우터에 pipeline 주입
 import app.api.routes as routes
 routes.rag_pipeline = pipeline
 
