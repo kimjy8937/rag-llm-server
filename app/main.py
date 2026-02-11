@@ -7,22 +7,21 @@ from app.embeddings.embedder import Embedder
 from app.vectorstore.faiss_store import FaissStore
 from app.llm.hf_llm import HFLlm
 from app.rag.pipeline import RagPipeline
-from app.api.routes import router, rag_pipeline
-
+from app.api.routes import router
+from app.ingestion.document_loader import load_documents_from_folder
 
 app = FastAPI()
 
 # ---------------------------
-# 서버 시작 시 RAG 초기화
+# 문서 자동 로딩
 # ---------------------------
-documents = [
-    "Jinyoung is a backend developer.",
-    "Jinyoung works at a company called ICTWAY.",
-    "He mainly uses Spring Boot and MariaDB.",
-    "He is currently building an AI chatbot using RAG.",
-    "The chatbot is written in Python with FastAPI."
-]
+documents = load_documents_from_folder("docs")
 
+print("로드된 문서 수:", len(documents))
+
+# ---------------------------
+# RAG 초기화
+# ---------------------------
 embedder = Embedder()
 doc_embeddings = embedder.encode(documents)
 
