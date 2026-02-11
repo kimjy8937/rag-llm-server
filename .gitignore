@@ -1,0 +1,69 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# =========================
+# FastAPI / runtime
+# =========================
+*.log
+*.sqlite3
+
+# =========================
+# IDE
+# =========================
+# PyCharm
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# =========================
+# OS
+# =========================
+# Windows
+Thumbs.db
+desktop.ini
+
+# macOS
+.DS_Store
+
+# =========================
+# Environment variables
+# =========================
+.env
+
+# =========================
+# HuggingFace cache
+# =========================
+.cache/
+huggingface/
+
+# =========================
+# FAISS / vector indexes
+# =========================
+*.faiss
+*.index
+
+# =========================
+# Build / dist
+# =========================
+build/
+dist/
+*.egg-info/
+
+# FAISS index
+index/
