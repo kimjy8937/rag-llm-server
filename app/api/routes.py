@@ -26,12 +26,12 @@ def ask_question(request: QueryRequest):
     history = chat_sessions[request.session_id]
 
     with lock:
-        answer = pipeline.ask(request.question, history)
+        response = pipeline.ask(request.question, history)
 
     history.append({"role": "user", "content": request.question})
-    history.append({"role": "assistant", "content": answer})
+    history.append({"role": "assistant", "content": response["answer"]})
 
-    return {"answer": answer}
+    return response
 
 @router.post("/reindex")
 def reindex():
