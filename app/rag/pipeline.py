@@ -1,14 +1,22 @@
+from app.reranker.reranker import Reranker
+
+
 class RagPipeline:
     def __init__(self, embedder, store, llm):
         self.embedder = embedder
         self.store = store
         self.llm = llm
+        self.reranker = Reranker()
 
     def ask(self, query, history):
         query_embedding = self.embedder.encode([query])
-        results = self.store.search(query_embedding, k=3)
 
-        contexts = [r["text"] for r in results]
+        results = self.store.search(query_embedding, k=10)
+
+        # re-ranker 적용
+        top_results = self.reranker.rerank(query, results, top_k=3)
+
+        contexts = [r["text"] for r in top_results]
         context_text = "\n".join(contexts)
 
         prompt = f"""
@@ -27,12 +35,12 @@ Question:
         sources = []
         seen = set()
 
-        for r in results:
+        for r in top_results:
             key = (r["source"], r["text"])
             if key not in seen:
                 sources.append({
                     "file": r["source"],
-                    "snippet": r["text"][:200]  # 최대 200자
+                    "snippet": r["text"][:200]
                 })
                 seen.add(key)
 
