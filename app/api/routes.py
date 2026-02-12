@@ -6,7 +6,13 @@ router = APIRouter()
 get_pipeline = None
 
 # 대화 세션(나중에 Redis로 교체)
-chat_sessions = {}
+chat_sessions = {
+    "session1": {
+        "messages": [],
+        "summary": ""
+    }
+}
+
 
 class QueryRequest(BaseModel):
     question: str
@@ -22,16 +28,18 @@ def ask_question(request: QueryRequest):
         raise HTTPException(status_code=500, detail="Pipeline is not ready yet")
 
     if request.session_id not in chat_sessions:
-        chat_sessions[request.session_id] = []
-    history = chat_sessions[request.session_id]
+        chat_sessions[request.session_id] = {
+            "messages": [],
+            "summary": ""
+        }
+
+    session = chat_sessions[request.session_id]
 
     with lock:
-        response = pipeline.ask(request.question, history)
-
-    history.append({"role": "user", "content": request.question})
-    history.append({"role": "assistant", "content": response["answer"]})
+        response = pipeline.ask(request.question, session)
 
     return response
+
 
 @router.post("/reindex")
 def reindex():
