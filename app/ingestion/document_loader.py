@@ -22,18 +22,26 @@ def read_pdf(file_path):
     return "\n".join(text)
 
 
-def split_into_chunks(text, chunk_size=500, overlap=50):
+def split_into_chunks(text, max_length=500):
+    paragraphs = text.split("\n\n")
     chunks = []
-    start = 0
-    text_length = len(text)
 
-    while start < text_length:
-        end = start + chunk_size
-        chunk = text[start:end]
-        chunks.append(chunk)
-        start = end - overlap
+    for para in paragraphs:
+        para = para.strip()
+        if not para:
+            continue
+
+        if len(para) <= max_length:
+            chunks.append(para)
+        else:
+            start = 0
+            while start < len(para):
+                end = start + max_length
+                chunks.append(para[start:end])
+                start = end
 
     return chunks
+
 
 def load_documents_from_folder(folder_path: str):
     all_chunks = []
