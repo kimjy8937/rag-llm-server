@@ -4,27 +4,28 @@ class RagPipeline:
         self.store = store
         self.llm = llm
 
-    def ask(self, query, history):
+    def ask(self, query, history=None):
         query_embedding = self.embedder.encode([query])
-        docs = self.store.search(query_embedding, k=2)
-        context = "\n".join(docs)
+        results = self.store.search(query_embedding, k=3)
 
-        system_prompt = f"""
-You are a helpful chatbot.
-Answer only using the context below.
+        contexts = [r["text"] for r in results]
+        sources = list(set(r["source"] for r in results))
+
+        context_text = "\n".join(contexts)
+
+        prompt = f"""
+Answer the question using the context below.
 
 Context:
-{context}
+{context_text}
+
+Question:
+{query}
 """
 
-        messages = [
-            {"role": "system", "content": system_prompt}
-        ]
+        answer = self.llm.generate(prompt)
 
-        # 이전 대화 기록 추가
-        messages.extend(history)
+        source_text = ", ".join(sources)
+        answer_with_source = f"{answer}\n\n[출처: {source_text}]"
 
-        # 현재 질문 추가
-        messages.append({"role": "user", "content": query})
-
-        return self.llm.chat(messages)
+        return answer_with_source

@@ -3,7 +3,6 @@ import numpy as np
 import os
 import pickle
 
-
 class FaissStore:
     def __init__(self, dimension, index_path="index/faiss.index", meta_path="index/docs.pkl"):
         self.index_path = index_path
@@ -24,10 +23,8 @@ class FaissStore:
         self.index.add(np.array(embeddings))
         self.documents.extend(documents)
 
-        # 인덱스 저장
         faiss.write_index(self.index, self.index_path)
 
-        # 문서 메타 저장
         with open(self.meta_path, "wb") as f:
             pickle.dump(self.documents, f)
 

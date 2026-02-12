@@ -14,3 +14,8 @@ class HFLlm:
             messages=messages,
         )
         return completion.choices[0].message.content
+
+    def generate(self, prompt: str):
+        return self.chat([
+            {"role": "user", "content": prompt}
+        ])
