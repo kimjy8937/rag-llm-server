@@ -1,3 +1,0 @@
-The chatbot is built using FastAPI.
-It uses FAISS as the vector database.
-Embeddings are generated locally.

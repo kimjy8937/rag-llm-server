@@ -1,0 +1,18 @@
+{"id":"q01","question":"How do I reset my password and how long does the reset link last?","expected_sources":["01_account_security.md"],"expected_mode":"document"}
+{"id":"q02","question":"Does DevBoard support 2FA?","expected_sources":["01_account_security.md"],"expected_mode":"document"}
+{"id":"q03","question":"Where can I create personal API tokens?","expected_sources":["01_account_security.md"],"expected_mode":"document"}
+{"id":"q04","question":"Who can invite members to a workspace?","expected_sources":["02_workspaces_roles.md"],"expected_mode":"document"}
+{"id":"q05","question":"What is the difference between Owner and Admin?","expected_sources":["02_workspaces_roles.md"],"expected_mode":"document"}
+{"id":"q06","question":"What webhook signature header does DevBoard use?","expected_sources":["03_integrations_webhooks.md"],"expected_mode":"document"}
+{"id":"q07","question":"What webhook events are available?","expected_sources":["03_integrations_webhooks.md"],"expected_mode":"document"}
+{"id":"q08","question":"What payment methods are supported?","expected_sources":["04_billing_plans.md"],"expected_mode":"document"}
+{"id":"q09","question":"How much does the Pro plan cost?","expected_sources":["04_billing_plans.md"],"expected_mode":"document"}
+{"id":"q10","question":"Are Guests counted as paid seats?","expected_sources":["04_billing_plans.md"],"expected_mode":"document"}
+{"id":"q11","question":"When can I get a full refund?","expected_sources":["05_refund_policy.md"],"expected_mode":"document"}
+{"id":"q12","question":"Are renewals refundable?","expected_sources":["05_refund_policy.md"],"expected_mode":"document"}
+{"id":"q13","question":"What does error code DB-409 mean?","expected_sources":["06_troubleshooting.md"],"expected_mode":"document"}
+{"id":"q14","question":"What is the API rate limit per token?","expected_sources":["06_troubleshooting.md"],"expected_mode":"document"}
+{"id":"q15","question":"How long are deleted projects restorable?","expected_sources":["07_privacy_retention.md"],"expected_mode":"document"}
+{"id":"ood01","question":"What is the capital of France?","expected_sources":[],"expected_mode":"general"}
+{"id":"ood02","question":"Write a Java quicksort implementation.","expected_sources":[],"expected_mode":"general"}
+{"id":"ood03","question":"Who is the CEO of Apple?","expected_sources":[],"expected_mode":"general"}
