@@ -1,0 +1,5 @@
+User Guide
+
+The system uses RAG for question answering.
+Spring Batch is used for nightly data processing.
+The administrator can upload documents through the API.

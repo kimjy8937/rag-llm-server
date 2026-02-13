@@ -1,18 +1,72 @@
-{"id":"q01","question":"How do I reset my password and how long does the reset link last?","expected_sources":["01_account_security.md"],"expected_mode":"document"}
-{"id":"q02","question":"Does DevBoard support 2FA?","expected_sources":["01_account_security.md"],"expected_mode":"document"}
-{"id":"q03","question":"Where can I create personal API tokens?","expected_sources":["01_account_security.md"],"expected_mode":"document"}
-{"id":"q04","question":"Who can invite members to a workspace?","expected_sources":["02_workspaces_roles.md"],"expected_mode":"document"}
-{"id":"q05","question":"What is the difference between Owner and Admin?","expected_sources":["02_workspaces_roles.md"],"expected_mode":"document"}
-{"id":"q06","question":"What webhook signature header does DevBoard use?","expected_sources":["03_integrations_webhooks.md"],"expected_mode":"document"}
-{"id":"q07","question":"What webhook events are available?","expected_sources":["03_integrations_webhooks.md"],"expected_mode":"document"}
-{"id":"q08","question":"What payment methods are supported?","expected_sources":["04_billing_plans.md"],"expected_mode":"document"}
-{"id":"q09","question":"How much does the Pro plan cost?","expected_sources":["04_billing_plans.md"],"expected_mode":"document"}
-{"id":"q10","question":"Are Guests counted as paid seats?","expected_sources":["04_billing_plans.md"],"expected_mode":"document"}
-{"id":"q11","question":"When can I get a full refund?","expected_sources":["05_refund_policy.md"],"expected_mode":"document"}
-{"id":"q12","question":"Are renewals refundable?","expected_sources":["05_refund_policy.md"],"expected_mode":"document"}
-{"id":"q13","question":"What does error code DB-409 mean?","expected_sources":["06_troubleshooting.md"],"expected_mode":"document"}
-{"id":"q14","question":"What is the API rate limit per token?","expected_sources":["06_troubleshooting.md"],"expected_mode":"document"}
-{"id":"q15","question":"How long are deleted projects restorable?","expected_sources":["07_privacy_retention.md"],"expected_mode":"document"}
-{"id":"ood01","question":"What is the capital of France?","expected_sources":[],"expected_mode":"general"}
-{"id":"ood02","question":"Write a Java quicksort implementation.","expected_sources":[],"expected_mode":"general"}
-{"id":"ood03","question":"Who is the CEO of Apple?","expected_sources":[],"expected_mode":"general"}
+{"id":"acc01","question":"I forgot my password. Where is the reset option and when does the link expire?","expected_sources":["01_account_security.md"],"expected_mode":"document","tags":["account","paraphrase"]}
+{"id":"acc02","question":"What is the validity window for password reset emails?","expected_sources":["01_account_security.md"],"expected_mode":"document","tags":["account","time_limit"]}
+{"id":"acc03","question":"Is two-factor login available, and which method is supported?","expected_sources":["01_account_security.md"],"expected_mode":"document","tags":["account","security"]}
+{"id":"acc04","question":"How can a user recover access if they lose their authenticator device?","expected_sources":["01_account_security.md"],"expected_mode":"document","tags":["account","security"]}
+{"id":"acc05","question":"Where do I generate a personal API key in the UI?","expected_sources":["01_account_security.md"],"expected_mode":"document","tags":["account","api_token"]}
+{"id":"acc06","question":"Can API tokens be revoked later?","expected_sources":["01_account_security.md"],"expected_mode":"document","tags":["account","api_token"]}
+{"id":"acc07","question":"What does DB-403 during login usually mean?","expected_sources":["01_account_security.md","06_troubleshooting.md"],"expected_mode":"document","tags":["account","error_code","overlap"]}
+
+{"id":"wrk01","question":"Which roles are allowed to invite new members to a workspace?","expected_sources":["02_workspaces_roles.md"],"expected_mode":"document","tags":["workspace","roles"]}
+{"id":"wrk02","question":"How long does a member invitation stay valid before it expires?","expected_sources":["02_workspaces_roles.md"],"expected_mode":"document","tags":["workspace","time_limit"]}
+{"id":"wrk03","question":"What permission does an Owner have that an Admin does not?","expected_sources":["02_workspaces_roles.md"],"expected_mode":"document","tags":["workspace","roles"]}
+{"id":"wrk04","question":"Do Guests have write access to issues?","expected_sources":["02_workspaces_roles.md"],"expected_mode":"document","tags":["workspace","roles"]}
+{"id":"wrk05","question":"Who can access internal projects?","expected_sources":["02_workspaces_roles.md"],"expected_mode":"document","tags":["workspace","visibility"]}
+{"id":"wrk06","question":"What is the access rule for private projects?","expected_sources":["02_workspaces_roles.md"],"expected_mode":"document","tags":["workspace","visibility"]}
+{"id":"wrk07","question":"Can an Admin delete the entire workspace?","expected_sources":["02_workspaces_roles.md"],"expected_mode":"document","tags":["workspace","roles"]}
+
+{"id":"int01","question":"What header should I use to verify webhook signatures?","expected_sources":["03_integrations_webhooks.md"],"expected_mode":"document","tags":["integration","webhook"]}
+{"id":"int02","question":"Which webhook event names are officially supported?","expected_sources":["03_integrations_webhooks.md"],"expected_mode":"document","tags":["integration","webhook"]}
+{"id":"int03","question":"What signing algorithm is used for webhook payloads?","expected_sources":["03_integrations_webhooks.md"],"expected_mode":"document","tags":["integration","webhook","security"]}
+{"id":"int04","question":"How many times will webhook delivery retry on failure?","expected_sources":["03_integrations_webhooks.md"],"expected_mode":"document","tags":["integration","webhook","retry"]}
+{"id":"int05","question":"Does webhook delivery itself have a rate limit?","expected_sources":["03_integrations_webhooks.md"],"expected_mode":"document","tags":["integration","webhook","rate_limit"]}
+{"id":"int06","question":"What GitHub sync actions are available after connecting a repo?","expected_sources":["03_integrations_webhooks.md"],"expected_mode":"document","tags":["integration","github"]}
+{"id":"int07","question":"Can labels be synchronized from GitHub into DevBoard?","expected_sources":["03_integrations_webhooks.md"],"expected_mode":"document","tags":["integration","github"]}
+
+{"id":"bil01","question":"What is the monthly price for the Pro plan per user?","expected_sources":["04_billing_plans.md"],"expected_mode":"document","tags":["billing","pricing"]}
+{"id":"bil02","question":"How much does Team cost per seat each month?","expected_sources":["04_billing_plans.md"],"expected_mode":"document","tags":["billing","pricing"]}
+{"id":"bil03","question":"Are Guests included when seat count is calculated for billing?","expected_sources":["04_billing_plans.md"],"expected_mode":"document","tags":["billing","seat"]}
+{"id":"bil04","question":"Is bank transfer accepted as a payment option?","expected_sources":["04_billing_plans.md"],"expected_mode":"document","tags":["billing","payment"]}
+{"id":"bil05","question":"Where can I download paid invoices?","expected_sources":["04_billing_plans.md"],"expected_mode":"document","tags":["billing","invoice"]}
+{"id":"bil06","question":"When are invoices generated?","expected_sources":["04_billing_plans.md"],"expected_mode":"document","tags":["billing","invoice"]}
+{"id":"bil07","question":"How many projects are allowed on the Free plan?","expected_sources":["04_billing_plans.md"],"expected_mode":"document","tags":["billing","plan_limits"]}
+
+{"id":"ref01","question":"Under what condition can I receive a full refund?","expected_sources":["05_refund_policy.md"],"expected_mode":"document","tags":["refund","eligibility"]}
+{"id":"ref02","question":"How long is the trial period for first-time upgrades?","expected_sources":["05_refund_policy.md"],"expected_mode":"document","tags":["refund","trial"]}
+{"id":"ref03","question":"Are subscription renewals eligible for refunds?","expected_sources":["05_refund_policy.md"],"expected_mode":"document","tags":["refund","eligibility"]}
+{"id":"ref04","question":"If I cancel now, does my plan stop immediately?","expected_sources":["05_refund_policy.md"],"expected_mode":"document","tags":["refund","cancellation"]}
+{"id":"ref05","question":"What info should I provide when reporting a wrong charge?","expected_sources":["05_refund_policy.md"],"expected_mode":"document","tags":["refund","dispute"]}
+{"id":"ref06","question":"Is there any refund after two weeks from first payment?","expected_sources":["05_refund_policy.md"],"expected_mode":"document","tags":["refund","time_limit"]}
+
+{"id":"trb01","question":"What does DB-409 indicate?","expected_sources":["06_troubleshooting.md"],"expected_mode":"document","tags":["troubleshooting","error_code"]}
+{"id":"trb02","question":"What is the per-token API request limit?","expected_sources":["06_troubleshooting.md"],"expected_mode":"document","tags":["troubleshooting","rate_limit"]}
+{"id":"trb03","question":"How long should clients wait after receiving DB-429?","expected_sources":["06_troubleshooting.md"],"expected_mode":"document","tags":["troubleshooting","rate_limit"]}
+{"id":"trb04","question":"What does DB-401 usually mean?","expected_sources":["06_troubleshooting.md","01_account_security.md"],"expected_mode":"document","tags":["troubleshooting","error_code","overlap"]}
+{"id":"trb05","question":"What response timing is expected for webhook endpoints?","expected_sources":["06_troubleshooting.md"],"expected_mode":"document","tags":["troubleshooting","webhook"]}
+{"id":"trb06","question":"How can I validate incoming webhook signatures?","expected_sources":["06_troubleshooting.md","03_integrations_webhooks.md"],"expected_mode":"document","tags":["troubleshooting","webhook","overlap"]}
+{"id":"trb07","question":"Which error code maps to server-side failure?","expected_sources":["06_troubleshooting.md"],"expected_mode":"document","tags":["troubleshooting","error_code"]}
+{"id":"trb08","question":"Which error means account lockout due to too many attempts?","expected_sources":["06_troubleshooting.md","01_account_security.md"],"expected_mode":"document","tags":["troubleshooting","error_code","overlap"]}
+
+{"id":"prv01","question":"How long can a deleted project still be restored?","expected_sources":["07_privacy_retention.md"],"expected_mode":"document","tags":["privacy","retention"]}
+{"id":"prv02","question":"What happens to a project after the restoration window passes?","expected_sources":["07_privacy_retention.md"],"expected_mode":"document","tags":["privacy","retention"]}
+{"id":"prv03","question":"How long are audit logs kept on Pro versus Team?","expected_sources":["07_privacy_retention.md"],"expected_mode":"document","tags":["privacy","retention"]}
+{"id":"prv04","question":"Are file attachments encrypted when stored?","expected_sources":["07_privacy_retention.md"],"expected_mode":"document","tags":["privacy","security"]}
+{"id":"prv05","question":"Are public sharing links enabled by default for attachments?","expected_sources":["07_privacy_retention.md"],"expected_mode":"document","tags":["privacy","security"]}
+{"id":"prv06","question":"For how long are issue comments and history retained?","expected_sources":["07_privacy_retention.md"],"expected_mode":"document","tags":["privacy","retention"]}
+
+{"id":"ovr01","question":"What are the default issue statuses before customization?","expected_sources":["00_overview.md"],"expected_mode":"document","tags":["overview","workflow"]}
+{"id":"ovr02","question":"Can issue status steps be customized per project?","expected_sources":["00_overview.md"],"expected_mode":"document","tags":["overview","workflow"]}
+{"id":"ovr03","question":"In DevBoard, what is a workspace in relation to projects?","expected_sources":["00_overview.md"],"expected_mode":"document","tags":["overview","concept"]}
+{"id":"ovr04","question":"Which document should users check for billing-related questions?","expected_sources":["00_overview.md"],"expected_mode":"document","tags":["overview","routing"]}
+
+{"id":"ood01","question":"What is the capital city of France?","expected_sources":[],"expected_mode":"general","tags":["ood"]}
+{"id":"ood02","question":"Write a Java quicksort implementation.","expected_sources":[],"expected_mode":"general","tags":["ood","coding"]}
+{"id":"ood03","question":"Who is the current CEO of Apple?","expected_sources":[],"expected_mode":"general","tags":["ood"]}
+{"id":"ood04","question":"Explain photosynthesis in simple terms.","expected_sources":[],"expected_mode":"general","tags":["ood"]}
+{"id":"ood05","question":"What is the derivative of x squared?","expected_sources":[],"expected_mode":"general","tags":["ood"]}
+{"id":"ood06","question":"Translate hello into Spanish.","expected_sources":[],"expected_mode":"general","tags":["ood"]}
+{"id":"na01","question":"Does DevBoard support annual billing discounts?","expected_sources":[],"expected_mode":"general","tags":["in_domain_no_answer","billing"]}
+{"id":"na02","question":"Can workspace invitations be restricted by email domain?","expected_sources":[],"expected_mode":"general","tags":["in_domain_no_answer","workspace"]}
+{"id":"na03","question":"Does DevBoard provide SAML SCIM provisioning?","expected_sources":[],"expected_mode":"general","tags":["in_domain_no_answer","integration"]}
+{"id":"na04","question":"What is the maximum attachment file size limit?","expected_sources":[],"expected_mode":"general","tags":["in_domain_no_answer","privacy"]}
+{"id":"na05","question":"Can I restore a deleted project after 30 days if I am on Team?","expected_sources":[],"expected_mode":"general","tags":["in_domain_no_answer","privacy"]}
+{"id":"na06","question":"Do webhook retries use fixed interval or jitter settings?","expected_sources":[],"expected_mode":"general","tags":["in_domain_no_answer","webhook"]}
